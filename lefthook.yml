@@ -1,10 +1,10 @@
-pre-commit: # githook name
-  commands: # list of commands
-    tests: # command name
-      run: go test ./... # command for execution
+pre-commit:
+  parallel: true
+  commands:
+    tests:
+      run: go test ./...
 
     govet:
-      tags: backend style
       files: git ls-files -m
       glob: "*.{go}"
       run: go vet {files}
