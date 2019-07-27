@@ -1,8 +1,10 @@
-pre-push: # githook name
-  commands: # list of commands
-    tests: # command name
-      run: go test -v # command for execution
 pre-commit: # githook name
   commands: # list of commands
     tests: # command name
-      run: go test -v # command for execution
+      run: go test ./... # command for execution
+
+    govet:
+      tags: backend style
+      files: git ls-files -m
+      glob: "*.{go}"
+      run: go vet {files}
