@@ -11,7 +11,7 @@ branches:
     - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 
 before_deploy:
-  - openssl aes-256-cbc -K $encrypted_546e7017bba9_key -iv $encrypted_546e7017bba9_iv -in aws-bot-vps.pem.enc -out aws-bot-vps.pem -d
+  - openssl aes-256-cbc -K $encrypted_546e7017bba9_key -iv $encrypted_546e7017bba9_iv -in scripts\aws-bot-vps.pem.enc -out scripts\aws-bot-vps.pem -d
 
 after_success:
   - test -n "$TRAVIS_TAG" && docker login -u=sochisic -p="$DOCKER_PASSWORD"
