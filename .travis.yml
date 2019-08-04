@@ -8,9 +8,9 @@ services:
 # safelist regexp for check branches like: v1.3
 branches:
   only:
-    - master
-    - release
-    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+    # - master
+    # - release
+    - /^vrelease\\d+\.\d+(\.\d+)?(-\S*)?$/
 
 after_success:
   # docker login is required if you want to push docker images.
@@ -34,3 +34,6 @@ deploy:
     on:
       tags: true
       condition: $TRAVIS_OS_NAME = linux
+
+# after_deploy:
+#   - script:
