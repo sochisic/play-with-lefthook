@@ -1,31 +1,21 @@
-# .travis.yml
 language: go
-
-# needed for the docker pipe
 services:
-  - docker
-
-# safelist regexp for check branches like: v1.3
+- docker
 branches:
   only:
-    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
-
-before_deploy:
-  - openssl aes-256-cbc -K $encrypted_546e7017bba9_key -iv $encrypted_546e7017bba9_iv -in "scripts/aws-bot-vps.pem.enc" -out "scripts/aws-bot-vps.pem" -d
-
+  - "/^v\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
 after_success:
-  - test -n "$TRAVIS_TAG" && docker login -u=sochisic -p="$DOCKER_PASSWORD"
-  - test -n "$TRAVIS_TAG" && docker build -t sochisic/play-with-lefthook:"$TRAVIS_TAG" -t sochisic/play-with-lefthook .
-  - test -n "$TRAVIS_TAG" && docker push sochisic/play-with-lefthook
-
-# calls goreleaser
+- test -n "$TRAVIS_TAG" && docker login -u=sochisic -p="$DOCKER_PASSWORD"
+- test -n "$TRAVIS_TAG" && docker build -t sochisic/play-with-lefthook:"$TRAVIS_TAG"
+  -t sochisic/play-with-lefthook .
+- test -n "$TRAVIS_TAG" && docker push sochisic/play-with-lefthook
 deploy:
-  - provider: script
-    skip_cleanup: true
-    script: curl -sL https://git.io/goreleaser | bash scripts/deploy.sh
-    on:
-      tags: true
-      condition: $TRAVIS_OS_NAME = linux
-      
-      
-    
+- provider: script
+  skip_cleanup: true
+  script: curl -sL https://git.io/goreleaser | bash scripts/deploy.sh
+  on:
+    tags: true
+    condition: "$TRAVIS_OS_NAME = linux"
+before_deploy:
+- openssl aes-256-cbc -K $encrypted_065220e2d887_key -iv $encrypted_065220e2d887_iv
+  -in scripts/aws-bot-vps.pem.enc -out scripts/aws-bot-vps.pem -d
