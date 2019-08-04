@@ -21,7 +21,7 @@ func main() {
 }
 
 func hello() string {
-	return "Hello world"
+	return "Hello world v0.3.4"
 }
 
 func HelloServer(w http.ResponseWriter, r *http.Request) {
