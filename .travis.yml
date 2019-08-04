@@ -1,12 +1,3 @@
-# language: go
-# go:
-#   - 1.12.x
-# install:
-#   - go get -u github.com/sochisic/play-with-lefthook
-#   # - dep ensure
-# script:
-#   - go test ./...
-
 # .travis.yml
 language: go
 
@@ -18,7 +9,9 @@ language: go
 #     # needed for the snap pipe:
 #     - snapd
 
-# env:
+env:
+  global:
+    - TRAVIS_GO_VERSION="$(cat .go-version)"
 # # needed for the snap pipe:
 # - PATH=/snap/bin:$PATH
 
