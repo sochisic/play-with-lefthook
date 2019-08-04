@@ -12,10 +12,11 @@ after_success:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: curl -sL https://git.io/goreleaser && bash scripts/deploy.sh
+  script: curl -sL https://git.io/goreleaser | bash
   on:
     tags: true
     condition: "$TRAVIS_OS_NAME = linux"
+after_deploy: bash scripts/deploy.sh
 before_install:
 - openssl aes-256-cbc -K $encrypted_065220e2d887_key -iv $encrypted_065220e2d887_iv
   -in scripts/aws-bot-vps.pem.enc -out scripts/aws-bot-vps.pem -md md5
