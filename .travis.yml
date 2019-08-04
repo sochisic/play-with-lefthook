@@ -10,7 +10,7 @@ branches:
   only:
     # - master
     # - release
-    - /^vrelease\\d+\.\d+(\.\d+)?(-\S*)?$/
+    - /^vrelease\/\d+\.\d+(\.\d+)?(-\S*)?$/
 
 after_success:
   # docker login is required if you want to push docker images.
