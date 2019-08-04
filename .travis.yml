@@ -9,6 +9,7 @@ services:
 branches:
   only:
     - master
+    - release
 
 after_success:
   # docker login is required if you want to push docker images.
