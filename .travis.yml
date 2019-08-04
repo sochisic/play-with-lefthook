@@ -1,32 +1,15 @@
 # .travis.yml
 language: go
-- 1.2.x
-
-# addons:
-#   apt:
-#     packages:
-#     # needed for the nfpm pipe:
-#     - rpm
-#     # needed for the snap pipe:
-#     - snapd
-
-# env:
-#   global:
-#     - TRAVIS_GO_VERSION="$(cat .go-version)"
-# # needed for the snap pipe:
-# - PATH=/snap/bin:$PATH
-
-# install:
-# # needed for the snap pipe:
-# - sudo snap install snapcraft --classic
+  - 1.2.x
 
 # needed for the docker pipe
 services:
   - docker
 
+# safelist
 branches:
   only:
-  - master
+    - master
 
 after_success:
   # docker login is required if you want to push docker images.
