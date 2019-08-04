@@ -1,7 +1,5 @@
-eval $(ssh-agent)
-ssh-add scripts/aws-bot-vps.pem
-send "\n";
 ssh -tt -i "scripts/aws-bot-vps.pem" -o "StrictHostKeyChecking=no" ubuntu@ec2-13-48-30-65.eu-north-1.compute.amazonaws.com << EOF
+send "\n";
 docker stop play
 docker rmi sochisic/play-with-lefthook
 docker run -d -p 3000:3000 --name play --rm sochisic/play-with-lefthook
