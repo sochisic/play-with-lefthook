@@ -17,7 +17,7 @@ after_success:
   # DOCKER_PASSWORD should be a secret in your .travis.yml configuration.
   - test -n "$TRAVIS_TAG" && docker login -u=sochisic -p="$DOCKER_PASSWORD"
   - test -n "$TRAVIS_TAG" && docker build -t sochisic/play-with-lefthook .
-  # - docker tag "$TRAVIS_TAG" sochisic/play-with-lefthook:latest
+  - test -n "$TRAVIS_TAG" && docker tag "$TRAVIS_TAG" sochisic/play-with-lefthook:latest
   - test -n "$TRAVIS_TAG" && docker push sochisic/play-with-lefthook
 # snapcraft login is required if you want to push snapcraft packages to the
 # store.
