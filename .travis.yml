@@ -1,5 +1,6 @@
 # .travis.yml
 language: go
+- 1.2.X
 
 # addons:
 #   apt:
@@ -9,9 +10,9 @@ language: go
 #     # needed for the snap pipe:
 #     - snapd
 
-env:
-  global:
-    - TRAVIS_GO_VERSION="$(cat .go-version)"
+# env:
+#   global:
+#     - TRAVIS_GO_VERSION="$(cat .go-version)"
 # # needed for the snap pipe:
 # - PATH=/snap/bin:$PATH
 
