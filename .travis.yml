@@ -16,6 +16,6 @@ deploy:
   on:
     tags: true
     condition: "$TRAVIS_OS_NAME = linux"
-before_deploy:
-- openssl aes-256-cbc -K $encrypted_065220e2d887_key -iv $encrypted_065220e2d887_iv
-  -in aws-bot-vps.pem.enc -out scripts/aws-bot-vps.pem -d
+before_install:
+- openssl aes-256-cbc -md md5 -K $encrypted_065220e2d887_key -iv $encrypted_065220e2d887_iv
+  -in scripts/aws-bot-vps.pem.enc -out scripts/aws-bot-vps.pem -d
