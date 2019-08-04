@@ -1,6 +1,5 @@
 # .travis.yml
 language: go
-  - 1.2.x
 
 # needed for the docker pipe
 services:
