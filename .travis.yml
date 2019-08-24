@@ -18,6 +18,6 @@ deploy:
       condition: "$TRAVIS_OS_NAME = linux"
 after_deploy: expect scripts/deploy.sh
 before_install:
+  - sudo apt-get install expect
   - openssl aes-256-cbc -K $encrypted_065220e2d887_key -iv $encrypted_065220e2d887_iv
     -in scripts/aws-bot-vps.pem.enc -out scripts/aws-bot-vps.pem -md md5 && chmod 400 scripts/aws-bot-vps.pem
-    -sudo apt-get install expect
