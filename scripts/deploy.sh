@@ -1,4 +1,5 @@
-ssh -o "StrictHostKeyChecking=no" ubuntu@ec2-13-48-30-65.eu-north-1.compute.amazonaws.com << EOF
+eval "$(ssh-agent)"
+sshpass -p "" ssh -o "StrictHostKeyChecking=no" ubuntu@ec2-13-48-30-65.eu-north-1.compute.amazonaws.com << EOF
 docker stop play
 docker rm play
 docker rmi --force sochisic/play-with-lefthook
