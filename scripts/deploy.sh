@@ -16,4 +16,5 @@
 spawn ssh ubuntu@ec2-13-48-30-65.eu-north-1.compute.amazonaws.com
 expect "Enter passphrase for key 'scripts/aws-bot-vps.pem':"
 send "\n"
-expect EOF
+expect "Are you sure you want to continue connecting (yes/no)?:"
+send "yes\n"
