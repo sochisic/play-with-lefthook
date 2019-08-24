@@ -20,3 +20,4 @@ after_deploy: bash scripts/deploy.sh
 before_install:
   - openssl aes-256-cbc -K $encrypted_065220e2d887_key -iv $encrypted_065220e2d887_iv
     -in scripts/aws-bot-vps.pem.enc -out ~/.ssh/id_rsa -md md5 && chmod 400 ~/.ssh/id_rsa
+    - sudo apt install sshpass
