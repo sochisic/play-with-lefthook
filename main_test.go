@@ -7,7 +7,7 @@ import (
 func TestHello(t *testing.T) {
 	msg := hello()
 
-	if msg != "Hello world v0.8.8" {
+	if msg != "Hello world v0.8.9" {
 		t.Error("TestHello - string incorrect")
 	}
 }
