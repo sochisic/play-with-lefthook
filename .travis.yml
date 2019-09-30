@@ -1,6 +1,8 @@
 language: go
 services:
   - docker
+go:
+  - 1.13.x
 branches:
   only:
     - "/^v\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
