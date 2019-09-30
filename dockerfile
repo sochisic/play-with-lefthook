@@ -25,4 +25,4 @@ FROM golang:alpine
 # RUN apk add --no-cache bash
 WORKDIR /play-with-lefthook
 COPY --from=build /bin/play /bin/app
-ENTRYPOINT ["/bin/app -port 443"]
+ENTRYPOINT ["/bin/app"]
