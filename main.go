@@ -19,14 +19,14 @@ func main() {
 
 	fmt.Printf("Listening port %v...", *port)
 	// err := http.ListenAndServe(":"+*port, mux) // задаем слушать порт
-	err := certmagic.HTTPS([]string{"ec2-13-48-30-65.eu-north-1.compute.amazonaws.com"}, mux) // задаем слушать порт
+	err := certmagic.HTTPS([]string{"play-with-lefthook.tk"}, mux) // задаем слушать порт
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
 }
 
 func hello() string {
-	return "Hello world v0.9.0"
+	return "Hello world v0.9.1"
 }
 
 func HelloServer(w http.ResponseWriter, r *http.Request) {
