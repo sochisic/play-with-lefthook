@@ -29,7 +29,7 @@ func redirectTLS(w http.ResponseWriter, r *http.Request) {
 }
 
 func hello() string {
-	return "Hello world v0.9.7"
+	return "Hello world v0.9.8"
 }
 
 func HelloServer(w http.ResponseWriter, r *http.Request) {
