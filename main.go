@@ -12,10 +12,20 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", HelloServer)
 
+	go func() {
+		if err := http.ListenAndServe(":80", http.HandlerFunc(redirectTLS)); err != nil {
+			log.Fatalf("ListenAndServe error: %v", err)
+		}
+	}()
+
 	err := certmagic.HTTPS([]string{"play-with-lefthook.tk", "www.play-with-lefthook.tk"}, mux)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
+}
+
+func redirectTLS(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "https://IPAddr:443"+r.RequestURI, http.StatusMovedPermanently)
 }
 
 func hello() string {
