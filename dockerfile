@@ -1,10 +1,16 @@
-# build stage
-FROM golang:alpine AS build-env
-ADD . /src
-RUN cd /src && go build -o app
+FROM golang:1.13 AS build
+
+WORKDIR /go/src/play
+ADD . .
+RUN go get -d ./... 
+RUN go install -v ./...
+COPY . /go/src/play
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /bin/play
 
 # final stage
-FROM alpine
+FROM golang:1.13-alpine
 WORKDIR /play-with-lefthook
-COPY --from=build-env /src/app /play-with-lefthook/
-ENTRYPOINT ./app
+COPY --from=build /bin/play /bin/play
+EXPOSE 80
+EXPOSE 443
+ENTRYPOINT ["/bin/play"]
